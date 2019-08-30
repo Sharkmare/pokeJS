@@ -1,26 +1,3 @@
-function pokeparse (suffix,x,msg){
-	var result=[];
-        switch(suffix[0]){
-        case "pokemon":
-          result.push('Pokedex ID: '+x.id)
-          result.push('name: '+ x.species.name)
-          result.push('weight: '+x.weight/10+" kg")
-          if(x.height<=9)
-          {result.push('height: '+x.height*10+" cm")}
-          else result.push('height: '+x.height/10+" m")
-		  return msg.channel.sendMessage(result.join("\n"))
-        break;
-    case "item":
-        result.push(x.name)
-        result.push(x.effect_entries[0].effect.split("\n").join(" "))
-		return msg.channel.sendMessage(result.join("\n"))
-    break;
-    //and so on
-    default: return msg.channel.sendMessage('Case undefined.')
-    
-    }
-}
-
 Commands.pokedex = {
   name: 'pokedex',
   hidden:true,
@@ -96,4 +73,55 @@ Http.onreadystatechange = (e) => {
     }
 }
 
+}
+function pokeparse (suffix,x,msg){
+	var result=[];
+        switch(suffix[0]){
+        case "pokemon":
+          result.push('Pokedex ID: '+x.id)
+          result.push('name: '+ x.species.name)
+          result.push('weight: '+x.weight/10+" kg")
+          if(x.height<=9)
+          {result.push('height: '+x.height*10+" cm")}
+          else result.push('height: '+x.height/10+" m")
+		  return msg.channel.sendMessage(result.join("\n"))
+        break;
+    case "item":
+        result.push(x.name)
+        result.push(x.effect_entries[0].effect.split("\n").join(" "))
+		return msg.channel.sendMessage(result.join("\n"))
+    break;
+case "type":
+var take2dmg=[];var give2dmg=[];
+var takehalfdmg=[];var givehalfdmg=[];
+var takenodmg=[];var givenodmg=[];
+dmgcalc = x.damage_relations
+  
+  takedoubledmgcalc = dmgcalc.double_damage_from;dmgcalcname(takedoubledmgcalc,take2dmg);
+  givedoubledmgcalc = dmgcalc.double_damage_to;dmgcalcname(givedoubledmgcalc,give2dmg);
+  takehalfdmgcalc = dmgcalc.half_damage_from;dmgcalcname(takehalfdmgcalc,takehalfdmg)
+  givehalfdmgcalc = dmgcalc.half_damage_to;dmgcalcname(givehalfdmgcalc,givehalfdmg)
+  takenodmgcalc = dmgcalc.no_damage_from;dmgcalcname(takenodmgcalc,takenodmg)
+  givenodmgcalc = dmgcalc.no_damage_to;dmgcalcname(givenodmgcalc,givenodmg)
+
+		typeinfo = "```CSS\n["+suffix[1]+"]"
+		if(take2dmg.length>0){ typeinfo +="\nTakes 200% from:\n"+take2dmg.join(", ")}
+		if(takehalfdmg.length>0){typeinfo +="\nTakes 50% from:\n"+takehalfdmg.join(", ")}
+		if(takenodmg.length>0){typeinfo +="\nTakes none from:\n"+takenodmg.join(", ")}
+		if(givenodmg.length>0){typeinfo +="\nDeals none to:\n"+givenodmg.join(", ")}
+		if(givehalfdmg.length>0){typeinfo +="\nDeals 50% to:\n"+givehalfdmg.join(", ")}
+		if(give2dmg.length>0){typeinfo +="\nDeals 200% to:\n"+give2dmg.join(", ")}
+		typeinfo +="\n\nPokemon with this type: "+x.pokemon.length
+		typeinfo +="\n\nMoves with this type: "+x.moves.length
+		typeinfo += "\n```"
+		return msg.channel.sendMessage(typeinfo)
+		
+    //and so on
+    default: return msg.channel.sendMessage('Case undefined.')
+    
+    }
+}
+function dmgcalcname(array,output){
+  for (i = 0; i < array.length; i++)
+  {output.push("#"+array[i].name)}
 }
