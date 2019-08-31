@@ -90,19 +90,19 @@ function pokeparse (suffix,x,msg){
         result.push(x.name)
         result.push(x.effect_entries[0].effect.split("\n").join(" "))
 		return msg.channel.sendMessage(result.join("\n"))
-    break;
-case "type":
-var take2dmg=[];var give2dmg=[];
-var takehalfdmg=[];var givehalfdmg=[];
-var takenodmg=[];var givenodmg=[];
-dmgcalc = x.damage_relations
-  
-  takedoubledmgcalc = dmgcalc.double_damage_from;dmgcalcname(takedoubledmgcalc,take2dmg);
-  givedoubledmgcalc = dmgcalc.double_damage_to;dmgcalcname(givedoubledmgcalc,give2dmg);
-  takehalfdmgcalc = dmgcalc.half_damage_from;dmgcalcname(takehalfdmgcalc,takehalfdmg)
-  givehalfdmgcalc = dmgcalc.half_damage_to;dmgcalcname(givehalfdmgcalc,givehalfdmg)
-  takenodmgcalc = dmgcalc.no_damage_from;dmgcalcname(takenodmgcalc,takenodmg)
-  givenodmgcalc = dmgcalc.no_damage_to;dmgcalcname(givenodmgcalc,givenodmg)
+		
+	case "type":
+	var take2dmg=[];var give2dmg=[];
+	var takehalfdmg=[];var givehalfdmg=[];
+	var takenodmg=[];var givenodmg=[];
+	dmgcalc = x.damage_relations
+	  
+	  takedoubledmgcalc = dmgcalc.double_damage_from;dmgcalcname(takedoubledmgcalc,take2dmg);
+	  givedoubledmgcalc = dmgcalc.double_damage_to;dmgcalcname(givedoubledmgcalc,give2dmg);
+	  takehalfdmgcalc = dmgcalc.half_damage_from;dmgcalcname(takehalfdmgcalc,takehalfdmg)
+	  givehalfdmgcalc = dmgcalc.half_damage_to;dmgcalcname(givehalfdmgcalc,givehalfdmg)
+	  takenodmgcalc = dmgcalc.no_damage_from;dmgcalcname(takenodmgcalc,takenodmg)
+	  givenodmgcalc = dmgcalc.no_damage_to;dmgcalcname(givenodmgcalc,givenodmg)
 
 		typeinfo = "```CSS\n["+suffix[1]+"]"
 		if(take2dmg.length>0){ typeinfo +="\nTakes 200% from:\n"+take2dmg.join(", ")}
@@ -115,7 +115,17 @@ dmgcalc = x.damage_relations
 		typeinfo +="\n\nMoves with this type: "+x.moves.length
 		typeinfo += "\n```"
 		return msg.channel.sendMessage(typeinfo)
-		
+	case "move":
+	moveinfo = "Name: "+x.name+"\n";
+	if(x.accuracy){moveinfo += "Accuracy: "+x.accuracy+"\n";}
+	if(x.power){moveinfo += "Power: "+x.power+"\n";}
+	moveinfo += "PP: "+x.pp+"\n";
+	moveinfo += "Type: "+x.type.name+"\n";
+	moveinfo += "Class: "+x.damage_class.name+"\n";
+	moveinfo += "Effect: "+x.effect_entries[0].short_effect+"\n";
+	return msg.channel.sendMessage(moveinfo)
+	
+	
     //and so on
     default: return msg.channel.sendMessage('Case undefined.')
     
