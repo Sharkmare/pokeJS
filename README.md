@@ -2,14 +2,14 @@
 
 Javascript to interface with https://pokeapi.co/ and grab relevant pokemon data.
 
-#AXIOS VARIANT
+**AXIOS VARIANT:**
 
 Requires axios
 
-#PURE VARIANT
+**PURE VARIANT:**
 
 Requires nothing
 
-#POKELOOKUP MAIN
+**POKELOOKUP MAIN:**
 
 Requires Discordie.
