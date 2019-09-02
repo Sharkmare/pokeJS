@@ -10,7 +10,6 @@ path = suffix.join("/")
 console.log (path)
 
 const msg = null
-const Http = new XMLHttpRequest()
 const url = `https://pokeapi.co/api/v2/${path}`
 getFILE(url,suffix)}
 
