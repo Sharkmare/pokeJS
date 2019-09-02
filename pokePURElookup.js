@@ -4,6 +4,7 @@ let suffix = "item master-ball"
 
 pokelookup(suffix)
 function pokelookup (suffix){
+suffix = suffix.toLowerCase()
 suffix = suffix.split(" ")
 pokeValidate(suffix[0])
 
