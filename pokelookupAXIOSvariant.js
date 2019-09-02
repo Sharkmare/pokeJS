@@ -3,6 +3,7 @@ let suffix = "pokemon blaziken" //input
 pokelookup(suffix)//starting function
 
 function pokelookup (suffix){
+suffix = suffix.toLowerCase()
 suffix = suffix.split(" ")
 pokeValidate(suffix[0])
 
