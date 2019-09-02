@@ -5,8 +5,9 @@ Commands.pokedex = {
     usage: 'pokemon/item [pokemon/item]',
     noDM: false,
     level: 0,
-    fn: function(msg, suffix, bot) {
+    fn: function(msg, suffix) {
         var dir = "G:/resources/"
+        suffix = suffix.toLowerCase()
         suffix = suffix.split(" ")
         switch (suffix[0]) {
             case "pokemon":
