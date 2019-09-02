@@ -12,4 +12,4 @@ Requires nothing (Written in plain JS)
 
 **POKELOOKUP MAIN:**
 
-Requires Discordie.
+Requires Discordie. (Node/JS Discord bot version, currently uses PURE code)
