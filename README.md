@@ -8,7 +8,7 @@ Requires axios
 
 **PURE VARIANT:**
 
-Requires nothing
+Requires nothing (Written in plain JS)
 
 **POKELOOKUP MAIN:**
 
