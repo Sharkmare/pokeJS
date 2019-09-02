@@ -1,5 +1,5 @@
-let suffix = "pokemon blaziken" //input
-
+let suffix = "pokemon ARCEUS" //input
+const axios = require('axios')
 pokelookup(suffix)//starting function
 
 function pokelookup (suffix){
@@ -10,9 +10,19 @@ pokeValidate(suffix[0])
 path = suffix.join("/")
 console.log (path)
 
-const msg = null
+
 const url = `https://pokeapi.co/api/v2/${path}`
-getFILE(url,suffix)}
+
+
+
+
+
+getFILE(url,suffix)
+
+
+
+}
+
 
 function getJSON(x) {return JSON.parse(x)}
 function randomIntFromInterval(min, max) {return Math.floor(Math.random() * (max - min + 1) + min)}
@@ -20,17 +30,19 @@ function randomIntFromInterval(min, max) {return Math.floor(Math.random() * (max
 function getFILE (url,suffix) {
 axios.get(url)
   .then(function (response) {
+    
     //success
-    x=response.data //no need to parse json since AXIOS returns JSON formatted data.
-    console.log(pokeparse(suffix, x, msg))
+    x=response.data
+    //console.log(JSON.stringify(x))
+    console.log(pokeparse(suffix, x))
+    
   })
   .catch(function (error) {
     //failure
     console.log(error);
   })
-  .finally(function () {
-    //always
-  });
+
+    
     }
 
 function pokeValidate(string) {
@@ -46,7 +58,7 @@ break;
 default: suffix="error"; return suffix
 }}
 
-function pokeparse(suffix, x, msg) {
+function pokeparse(suffix, x) {
     var result = [];
     switch (suffix[0]) {
         case "pokemon-species":
@@ -60,7 +72,8 @@ function pokeparse(suffix, x, msg) {
             if (x.height <= 9) {
                 result.push('height: ' + x.height * 10 + " cm")
             } else result.push('height: ' + x.height / 10 + " m")
-            return(result.join("\n"))
+            
+            return(result.join("\n")) 
             break;
         case "item":
             result.push(x.name)
