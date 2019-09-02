@@ -15,6 +15,7 @@ Commands.pokedex = {
             case "type":
             case "move":
             case "item":
+            case "pokemon-species":
                 break;
             default:
                 suffix = "error";
@@ -90,6 +91,10 @@ function pokelookup(suffix, msg, dir) {
 function pokeparse(suffix, x, msg) {
     var result = [];
     switch (suffix[0]) {
+        case "pokemon-species":
+            
+            return msg.channel.sendMessage(x.flavor_text_entries[randomIntFromInterval(0, x.flavor_text_entries.length)])
+            
         case "pokemon":
             result.push('Pokedex ID: ' + x.id)
             result.push('name: ' + x.species.name)
@@ -176,3 +181,4 @@ function dmgcalcname(array, output) {
         output.push("#" + array[i].name)
     }
 }
+function randomIntFromInterval(min, max) {return Math.floor(Math.random() * (max - min + 1) + min)}
