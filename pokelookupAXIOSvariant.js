@@ -21,7 +21,7 @@ function getFILE (url,suffix) {
 axios.get(url)
   .then(function (response) {
     //success
-    x=response.data
+    x=response.data //no need to parse json since AXIOS returns JSON formatted data.
     console.log(pokeparse(suffix, x, msg))
   })
   .catch(function (error) {
