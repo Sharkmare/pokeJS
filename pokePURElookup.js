@@ -1,6 +1,5 @@
-let suffix = "item master-ball"
+let suffix = "pokemon-species blaziken ja"
 //suffix is used to provide input arguments for testing
-
 
 pokelookup(suffix)
 function pokelookup (suffix){
@@ -8,13 +7,14 @@ suffix = suffix.toLowerCase()
 suffix = suffix.split(" ")
 pokeValidate(suffix[0])
 
-path = suffix.join("/")
+path = suffix[0]+"/"+suffix[1] //changed to hard coding suff 1 and 0 to accomedate langaugee suffix 2
 console.log (path)
 
 const msg = null
 const Http = new XMLHttpRequest()
 const url = `https://pokeapi.co/api/v2/${path}`
 var x;
+var array;
 getFILE(url,Http,x,suffix)
 
 
@@ -54,8 +54,14 @@ function pokeparse(suffix, x, msg) {
     var result = [];
     switch (suffix[0]) {
         case "pokemon-species":
-            
-            return(x.flavor_text_entries[randomIntFromInterval(0, x.flavor_text_entries.length)])
+            entries = x.flavor_text_entries
+            //console.log(entries)
+            if(suffix[2]){entries = entries.filter(d => d.language.name == suffix[2])}
+            else {entries = entries.filter(d => d.language.name == 'en')}
+            if(entries.length <= 0) {return "No entries found for given language token "+suffix[2]}
+
+            entry=randomIntFromInterval(0, entries.length)
+            return(entries[entry].flavor_text)
             
         case "pokemon":
             result.push('Pokedex ID: ' + x.id)
@@ -142,3 +148,8 @@ function dmgcalcname(array, output) {
     for (i = 0; i < array.length; i++) {
         output.push("#" + array[i].name)
     }}
+
+function filter(json,value) {
+  result = json.filter(d => d == value)
+  return result
+}
