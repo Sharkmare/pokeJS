@@ -1,4 +1,3 @@
-pokelookup(suffix)
 function pokelookup (suffix){
 suffix = suffix.toLowerCase()
 suffix = suffix.split(" ")
