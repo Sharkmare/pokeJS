@@ -59,8 +59,7 @@ function pokeparse(suffix, x, msg) {
             if(suffix[2]){entries = entries.filter(d => d.language.name == suffix[2])}
             else {entries = entries.filter(d => d.language.name == 'en')}
             if(entries.length <= 0) {return "No entries found for given language token "+suffix[2]}
-
-            entry=randomIntFromInterval(0, entries.length)
+            entry=randomIntFromInterval(0, entries.length-1)
             return(entries[entry].flavor_text)
             
         case "pokemon":
