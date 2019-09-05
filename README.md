@@ -15,5 +15,7 @@ Requires nothing (Written in plain JS)
 Requires Discordie. (Node/JS Discord bot version, currently uses PURE code)
 
 **FUNCTIONS FOLDER**
+
 Up to date versions of each function and function variant.
-Easier to maintain that 3 seperate full js files.
+
+Easier to maintain than 3 seperate full js files.
