@@ -2,19 +2,19 @@
 
 Javascript to interface with https://pokeapi.co/ and grab relevant pokemon data.
 
-**AXIOS VARIANT:**
+**AXIOS VARIANT:** (Deprecated)
 
 Requires axios
 
-**PURE VARIANT:**
+**PURE VARIANT:** (Deprecated)
 
 Requires nothing (Written in plain JS)
 
-**POKELOOKUP MAIN:**
+**POKELOOKUP MAIN:** (Deprecated)
 
 Requires Discordie. (Node/JS Discord bot version, currently uses PURE code)
 
-**FUNCTIONS FOLDER**
+**FUNCTIONS FOLDER** (Active)
 
 Up to date versions of each function and function variant.
 
